@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Оплата</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="menu">
+        <h1>Оплата</h1>
+        <form action="/congrats" method="POST">
+            <input class="text_in" type="text" id="card_number" name="card_number" placeholder="Номер карты" required><br>
+
+            <input class="text_in" type="text" id="expiration_date" name="expiration_date" placeholder="Срок действия" required><br>
+
+            <input class="text_in" type="text" id="cvv" name="cvv" placeholder="CVV" required><br>
+
+            <button type="submit" value="Pay">Оплатить</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Регистрация пользователя</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="reg_back">
+        <form method="post">
+            <h1>Регистрация пользователя!</h1>
+
+            <input class="text_in" type="text" name="username" placeholder="Логин">
+            <br>
+            <input class="text_in" type="password" name="password" placeholder="Пароль">
+            <br>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+
+        <div>
+            {% for error in errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+
+        <a href="/">На главную</a>
+    </div>
+</body>
+</html>

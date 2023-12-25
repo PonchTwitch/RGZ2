@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Авторизация</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="auth_back">
+        <h1>Авторизация</h1>
+    
+        <div class="auth">
+            <form method="POST" action="{{ url_for('login') }}">
+                <input class="text_in" type="text" name="username" placeholder="Логин">
+                <br>
+                <input class="text_in" type="password" name="password" placeholder="Пароль">
+                <br>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+
+        <div>
+            {% for error in errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+
+        <a href="/">На главную</a>
+    </div>
+</body>
+</html>

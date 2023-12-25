@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div>
+        <div class="header">
+            <h1 style="left: 10px; color: burlywood;">Магазин мебели «Ваш дом»</h1>
+            {% if current_user.is_authenticated %}
+                <div class="li">
+                    <a href="/cart">Корзина</a>
+                    <a href="{{ url_for('logout') }}">Выйти</a>
+                </div>
+                <div class="username">
+                    Вы вошли как: {{ current_user.username }}
+                </div>
+            {% else %}
+                <div class="li">
+                    <a href="{{ url_for('login') }}">Войти</a>
+                    <a href="{{ url_for('register') }}">Регистрация</a>
+                    <br>
+                    <div class="username">Вы не вошли в аккаунт</div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="view">
+            {% for product in products %}
+                <li>
+                    <h2 class="h2_view">{{ product.name }}</h2>
+                    <p style="padding-left: 50px;">Характеристики: {{ product.description }}</p>
+                    <p style="text-align: center;"><img src="{{ product.photo }}" alt="{{ product.name }}" width="200"></p>
+                    <p style="text-align: center;">Стоимость: {{ product.price }}₽</p>
+
+                    {% if current_user.is_authenticated %}
+                        <p style="text-align: center;"><a href="/add_to_cart/{{ product.id }}">Добавить в корзину</a></p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

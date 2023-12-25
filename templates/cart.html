@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Корзина</title>
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+</head>
+<body>
+    <div class="menu">
+        <h1 style="margin: 0px;">Корзина 🛒</h1>
+        <br>
+        <div>
+            {% for product_id, data in grouped_items.items() %}
+                {% set cart_item = cart_items|selectattr('product_id', 'equalto', product_id)|first %}
+                <li>
+                    {{ data['name'] }} ({{ data['count'] }}) - ₽{{ data['price'] * data['count'] }}
+                    <a href="/remove_from_cart/{{ cart_item.id }}">Удалить</a>
+                </li>
+            {% endfor %}
+        </div>
+        <p>Сумма товаров: {{ total_cost }}₽</p>
+        {% if cart_items %}
+        <a href="/checkout">Оформить заказ</a>
+        {% endif %}
+        <a href="/">Продолжить покупки</a>
+    </div>
+</body>
+</html>
